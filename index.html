@@ -1,124 +1,113 @@
+from getpass import getpass
+
+# === Ввод данных безопасно ===
+TOKEN = getpass("Введи свой GitHub токен: ")
+GITHUB_USER = "твое_имя_на_github"
+REPO_NAME = "monro"
+EMAIL = "email@пример.com"
+
+# === Установка Git ===
+!apt-get install git -y
+
+# === HTML нового современного лендинга ===
+html_code = """
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Эскорт Агентство Монро — информационные услуги</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Эскорт Агентство Монро — информационные услуги</title>
+<meta name="description" content="Эскорт агентство Монро — информационные услуги. Подбор персонала и сопровождение мероприятий.">
+<meta name="keywords" content="эскорт агентство, агентство Монро, сопровождение, Киев, Украина, информационные услуги">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+<style>
+/* --- Базовые стили --- */
+body {margin:0;font-family:'Open Sans',sans-serif;background:#fefefe;color:#222;scroll-behavior:smooth;}
+header {background:#000 url('https://upload.wikimedia.org/wikipedia/commons/a/a3/Marilyn_Monroe_in_1953.jpg') center/cover no-repeat;color:#fff;text-align:center;padding:120px 20px;position:relative;transition:0.5s;}
+header::after {content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.35);}
+header h1 {position:relative;font-family:'Playfair Display', serif;font-size:50px;margin:0;}
+header p {position:relative;font-size:20px;margin:10px 0 20px;}
+a.btn {background:#c2185b;color:#fff;padding:15px 30px;border-radius:8px;text-decoration:none;font-weight:bold;transition:0.3s; position:relative;}
+a.btn:hover {background:#a31548; transform:scale(1.05);}
 
-  <!-- 🔍 SEO -->
-  <meta name="description" content="Эскорт агентство Монро — информационные услуги. Организация встреч, сопровождение мероприятий, подбор персонала. Конфиденциальность и профессионализм.">
-  <meta name="keywords" content="эскорт агентство, агентство Монро, сопровождение, элит эскорт, модельное агентство, услуги сопровождения, Киев, Украина">
-  <meta name="author" content="Агентство Монро">
+/* --- Секции и анимация --- */
+section {max-width:800px;margin:auto;padding:60px 20px;text-align:center; opacity:0; transform:translateY(30px); transition:1s;}
+section.visible {opacity:1; transform:translateY(0);}
+h2 {color:#c2185b;font-family:'Playfair Display', serif;margin-bottom:20px;}
+ul {list-style:none;padding:0;font-size:18px;line-height:1.8;}
+ul li {margin:10px 0;}
 
-  <!-- 🌐 Соцсети -->
-  <meta property="og:title" content="Эскорт Агентство Монро">
-  <meta property="og:description" content="Премиальные информационные услуги в сфере сопровождения.">
-  <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/a/a3/Marilyn_Monroe_in_1953.jpg">
-  <meta property="og:type" content="website">
+/* --- Футер --- */
+footer {background:#111;color:#bbb;text-align:center;padding:25px;font-size:14px;}
+footer span {display:block;margin-top:5px;font-size:13px;color:#777;}
 
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans&display=swap');
-    body {
-      margin: 0;
-      font-family: 'Open Sans', sans-serif;
-      color: #222;
-      background-color: #faf7f5;
-    }
-    header {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                  url('https://upload.wikimedia.org/wikipedia/commons/a/a3/Marilyn_Monroe_in_1953.jpg') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 120px 20px;
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-    header p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto;
-      color: #f8f8f8;
-    }
-    section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-    h2 {
-      color: #c2185b;
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 20px;
-    }
-    .btn {
-      display: inline-block;
-      background: #c2185b;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #a3154d;
-    }
-    footer {
-      background: #111;
-      color: #bbb;
-      padding: 25px 15px;
-      font-size: 14px;
-      text-align: center;
-    }
-    footer span {
-      display: block;
-      margin-top: 5px;
-      font-size: 13px;
-      color: #777;
-    }
-  </style>
+/* --- Плавная кнопка "Telegram" --- */
+a.btn {box-shadow:0 4px 6px rgba(0,0,0,0.2);}
+a.btn:hover {box-shadow:0 8px 12px rgba(0,0,0,0.3);}
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Эскорт Агентство Монро</h1>
-    <p>Элегантность. Уверенность. Стиль.  
-    Мы предоставляем информационные услуги премиум-класса.</p>
-    <a href="#contact" class="btn">Связаться с нами</a>
-  </header>
+<header>
+<h1>Эскорт Агентство Монро</h1>
+<p>Элегантность. Уверенность. Стиль.</p>
+<a href="https://t.me/yourtelegram" target="_blank" class="btn">Связаться в Telegram</a>
+</header>
 
-  <section id="about">
-    <h2>О нас</h2>
-    <p>Агентство «Монро» — команда профессионалов, объединённых одной целью: создавать атмосферу доверия, эстетики и совершенства.  
-    Мы предоставляем только **информационные услуги**, помогая клиентам подобрать сопровождение и персонал для мероприятий и путешествий.</p>
-  </section>
+<section id="about">
+<h2>О нас</h2>
+<p>Агентство «Монро» предоставляет исключительно информационные услуги. Мы специализируемся на подборе персонала и сопровождении мероприятий. Вся информация носит справочный характер.</p>
+</section>
 
-  <section id="services">
-    <h2>Наши направления</h2>
-    <ul style="list-style:none; padding:0; font-size:18px; line-height:1.8;">
-      <li>🎭 Организация и подбор персонала для мероприятий</li>
-      <li>💼 Консультационные услуги по подбору моделей и хостес</li>
-      <li>📸 Партнёрство с модельными агентствами</li>
-      <li>🌍 Сопровождение деловых встреч (информационный формат)</li>
-    </ul>
-  </section>
+<section id="services">
+<h2>Наши направления</h2>
+<ul>
+<li>🎭 Организация персонала для мероприятий</li>
+<li>💼 Консультации по подбору моделей и хостес</li>
+<li>📸 Партнёрство с модельными агентствами</li>
+<li>🌍 Информационное сопровождение деловых встреч</li>
+</ul>
+</section>
 
-  <section id="contact">
-    <h2>Контакты</h2>
-    <p>📞 Телефон: +380 (xx) xxx-xx-xx</p>
-    <p>📧 Email: info@monro-agency.com</p>
-    <a href="https://t.me/youragency" class="btn">Связаться в Telegram</a>
-  </section>
+<section id="contact">
+<h2>Контакты</h2>
+<p>📞 Телефон: +380 (xx) xxx-xx-xx<br>📧 Email: info@monro-agency.com</p>
+<a href="https://t.me/yourtelegram" target="_blank" class="btn">Написать в Telegram</a>
+</section>
 
-  <footer>
-    © 2025 Эскорт Агентство Монро  
-    <span>Агентство оказывает исключительно информационные услуги.  
-    Вся информация на сайте носит справочный характер и не является предложением услуг интимного характера.</span>
-  </footer>
+<footer>
+© 2025 Эскорт Агентство Монро
+<span>Агентство оказывает исключительно информационные услуги. Вся информация носит справочный характер и не является предложением интимных услуг.</span>
+</footer>
+
+<script>
+// Анимация секций при скролле
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+sections.forEach(section => {
+if(section.getBoundingClientRect().top < window.innerHeight - 100){
+section.classList.add('visible');
+}
+});
+});
+</script>
 
 </body>
 </html>
+"""
+
+with open("index.html", "w") as f:
+    f.write(html_code)
+
+# === Настройка Git и пуш на GitHub ===
+!git config --global user.email "{EMAIL}"
+!git config --global user.name "{GITHUB_USER}"
+
+!git init
+!git branch -M main
+!git add index.html
+!git commit -m "Modern minimalistic landing page with animation"
+!git remote add origin https://{GITHUB_USER}:{TOKEN}@github.com/{GITHUB_USER}/{REPO_NAME}.git
+!git push -u origin main --force
+
+print("✅ Современный минималистичный сайт загружен на GitHub. Включите Pages в настройках репозитория.")
